@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        button {   
+            background-color: #4c4b4b;  
+            color: #ffffff;               
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        button {
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4c4b4b;
+            color: #ffffff;
+            padding: 5px 10px;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        p {
+            background-color: #4c4b4b;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#938f86;
+        }
+
+        header {
+            background-color: #313131;
+            color: #ffffff;
+            padding: 20px;
+            
+        }
+
+        header h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+            
+        }
+
+        h2 {
+            margin-top: 50px;
+            margin-bottom: 40px;
+            /*background-color: #ffffff;*/
+        }
+
+            main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    }
+
+        #commentForm {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #commentForm input[type="text"] {
+            width: 300px;
+            padding: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        #commentForm button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        .comment {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .comment p {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .comment .actions {
+            margin-top: 10px;
+        }
+        
+        .comment .actions button {
+            padding: 2px 5px;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+        footer p {
+        text-align: center;
+}
+    </style>
+</head>
+<body>
+    
+<body>
+    <header>
+        <h1><B>킥복싱 커뮤니티</B></h1>
+    </header>
+    <main>
+        <h2><b>NO KICK NO LIFE</b></h2>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="https://nypost.com/wp-content/uploads/sites/2/2021/02/mike-tyson-hulu-02.jpg?quality=90&strip=all&w=1280" 
+            img width="1200" height="700.26" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="https://th.bing.com/th/id/R.ee4710a3034b226ed55c669498ed0836?rik=8nhhLGK99QE4RQ&riu=http%3a%2f%2fwww.nationalenquirer.com%2fwp-content%2fuploads%2f2016%2f06%2fmuhammad-ali-parkinsons-diagnosis-7.jpg&ehk=D4OsVHlG1canZ51K%2b9L9N0nzhfMMlcMYTTUC8qdFQTg%3d&risl=&pid=ImgRaw&r=0" 
+            img width="1200" height="700.26" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="https://www.superprof.it/blog/wp-content/uploads/2020/02/nino-benvenuti-campione-di-boxe-680x453.jpg"
+            img width="1200" height="700.26" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        
+        <h2><b>"Boxers only fight in the ring"</b></h2>
+        <div id="commentForm"> 
+            <input type="text" id="commentInput">
+            <button onclick="addComment()">댓글 작성</button> &nbsp&nbsp&nbsp&nbsp
+            <input type="text" id="searchInput">  
+            <button onclick="searchComment()">댓글 검색</button>
+        </div>
+        <div id="commentList">
+        </div>
+    </main>
+
+    <script>
+        // 댓글 목록을 저장할 배열
+        var comments = [];
+        
+        // 댓글 생성 함수
+        function addComment() {
+            var commentInput = document.getElementById("commentInput");
+            var comment = commentInput.value;
+            if (comment !== "") {
+                comments.push(comment);
+                renderComments();
+                commentInput.value = "";
+            }
+        }
+
+        // 댓글 삭제 함수
+        function deleteComment(index) {
+            comments.splice(index, 1);
+            renderComments();
+        }
+
+        // 댓글 검색 함수
+        function searchComment() {
+            var searchInput = document.getElementById("searchInput");
+            var keyword = searchInput.value;
+            var searchResult = comments.filter(function(comment) {
+                return comment.includes(keyword);
+            });
+            renderComments(searchResult);
+        }
+
+        // 댓글 수정 함수
+        function editComment(index) {
+            var newComment = prompt("댓글을 수정하세요:");
+            if (newComment !== null && newComment !== "") {
+                comments[index] = newComment;
+                renderComments();
+            }
+        }
+
+        // 댓글 목록을 화면에 출력하는 함수
+        function renderComments(commentsToRender) {
+            var commentList = document.getElementById("commentList");
+            commentList.innerHTML = "";
+
+            var commentsToShow = commentsToRender || comments;
+
+            for (var i = 0; i < commentsToShow.length; i++) {
+                var commentItem = document.createElement("div");
+                commentItem.className = "comment";
+
+                var commentText = document.createElement("p");
+                commentText.textContent = commentsToShow[i];
+                commentItem.appendChild(commentText);
+
+                var actions = document.createElement("div");
+                actions.className = "actions";
+
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "삭제";
+                deleteButton.setAttribute("onclick", "deleteComment(" + i + ")");
+                actions.appendChild(deleteButton);
+
+                var editButton = document.createElement("button");
+                editButton.textContent = "수정";
+                editButton.setAttribute("onclick", "editComment(" + i + ")");
+                actions.appendChild(editButton);
+
+                commentItem.appendChild(actions);
+
+                commentList.appendChild(commentItem);
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; 2022 junsa Kickboxing Gym. All rights reserved.</p>
+    </footer>
+
+    </body>
+<
